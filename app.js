@@ -20,7 +20,7 @@ function show() {
 $("#go").onclick = () => { let v = vis(); let u = v.filter(x => !known.has(x.n)); deck = (u.length ? u : v).slice().sort(() => Math.random() - .5); di = 0; $("#drill").classList.add("on"); show() };
 $("#dx").onclick = () => { $("#drill").classList.remove("on"); render() };
 
-let rot = 0, busy = false, spins = 0; const POOL = [6, 15, 30, 3, 50, 27, 47, 19, 26, 42, 11, 28, 44, 38, 34, 1, 17, 49, 36, 46, 41, 8, 9, 12], FIRST = 15, bag = POOL.slice();
+let rot = 0, busy = false, spins = 0; const POOL = [34, 44, 13, 37, 5, 45, 31], FIRST = POOL.length, bag = POOL.slice();
 function draw() {
     const x = $("#wh").getContext("2d"), N = D.length, a = 2 * Math.PI / N; x.clearRect(0, 0, 600, 600);
     D.forEach((d, i) => {
