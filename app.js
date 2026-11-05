@@ -1,4 +1,4 @@
-// Эргүүлэх дугуй: эхний FIRST удаа POOL доторх асуултаас санамсаргүй (давтагдахгүй), дараа нь 50-аас санамсаргүй
+// Эргүүлэх дугуй: эргэлт бүрд бүх 50 асуултаас санамсаргүй сонгоно.
 const C = { forms: ["Жор ба эмийн хэлбэр", "#b1301f"], pk: ["Шимэгдэлт ба хориг", "#1b7f7a"], met: ["Хувирал ба ялгарал", "#8a5fc2"], dyn: ["Рецептор ба үйлдэл", "#a8730f"], dose: ["Тун", "#2f7fd0"], inter: ["Харилцан үйлчлэл", "#d2691e"], adv: ["Сөрөг нөлөө", "#d23a62"] };
 const $ = s => document.querySelector(s); let cat = "all", qs = "", known = new Set(), deck = [], di = 0;
 try { known = new Set(JSON.parse(localStorage.getItem("pq-known") || "[]")) } catch (e) { }
@@ -20,7 +20,7 @@ function show() {
 $("#go").onclick = () => { let v = vis(); let u = v.filter(x => !known.has(x.n)); deck = (u.length ? u : v).slice().sort(() => Math.random() - .5); di = 0; $("#drill").classList.add("on"); show() };
 $("#dx").onclick = () => { $("#drill").classList.remove("on"); render() };
 
-let rot = 0, busy = false, spins = 0; const POOL = [34, 44, 13, 37, 5, 45, 31], FIRST = POOL.length, bag = POOL.slice();
+let rot = 0, busy = false;
 function draw() {
     const x = $("#wh").getContext("2d"), N = D.length, a = 2 * Math.PI / N; x.clearRect(0, 0, 600, 600);
     D.forEach((d, i) => {
@@ -37,8 +37,8 @@ function showRes(d) {
     R.scrollIntoView({ behavior: "smooth", block: "start" })
 }
 $("#spinbtn").onclick = () => {
-    if (busy) return; busy = true; const sp = spins++; $("#res").innerHTML = "";
-    const d = sp < FIRST ? D[bag.splice(Math.floor(Math.random() * bag.length), 1)[0] - 1] : D[Math.floor(Math.random() * D.length)], i = D.indexOf(d), a = 360 / D.length, off = i * a + (Math.random() - .5) * a * .7;
+    if (busy) return; busy = true; $("#res").innerHTML = "";
+    const d = D[Math.floor(Math.random() * D.length)], i = D.indexOf(d), a = 360 / D.length, off = i * a + (Math.random() - .5) * a * .7;
     rot = rot - (rot % 360) + 360 * 6 + (((-off) % 360) + 360) % 360; $("#wh").style.transform = `rotate(${rot}deg)`;
     setTimeout(() => { busy = false; showRes(d) }, matchMedia("(prefers-reduced-motion:reduce)").matches ? 50 : 4700)
 };
