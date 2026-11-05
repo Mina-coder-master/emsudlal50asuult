@@ -85,28 +85,6 @@ body {
     background: radial-gradient(circle, #f0b429 0 30%, transparent 31%), repeating-radial-gradient(circle, transparent 0 24px, rgba(240, 180, 41, .5) 24px 26px)
 }
 
-.brand {
-    position: relative;
-    display: block;
-    width: 180px;
-    max-width: 100%;
-    padding: 8px;
-    margin-bottom: 24px;
-    border-radius: 20px;
-    background: #fffdf8;
-}
-
-.brand img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-.brand:focus-visible {
-    outline: 3px solid #f0b429;
-    outline-offset: 5px;
-}
-
 .kicker {
     font-weight: 800;
     letter-spacing: .24em;
